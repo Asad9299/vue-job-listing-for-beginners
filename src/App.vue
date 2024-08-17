@@ -1,3 +1,17 @@
+<script setup>
+  import Navbar from "@/components/Navbar.vue";
+  import Hero from "@/components/Hero.vue";
+  import HomeCards from "@/components/HomeCards.vue";
+  import JobListings from "@/components/JobListings.vue";
+</script>
 <template>
-  <h2 class="text-s text-center">Hello Asad!</h2>
+  
+  <Navbar />
+  
+  <Hero/>
+  
+  <HomeCards />
+
+  <JobListings :limit="3" :showButton="true"/>
+
 </template>
