@@ -1,13 +1,18 @@
 <script setup> 
-    import { ref }  from 'vue';
+    import { onMounted, ref }  from 'vue';
+    import axios from 'axios';
     import JobListing from "@/components/JobListing.vue"
-    import jobsData from "@/jobs.json";
 
-    const jobs = ref(jobsData);
+    const jobs = ref([]);
 
     defineProps({
         limit: Number,
         showButton: Boolean,
+    });
+
+    onMounted(async () => {
+      const response = await axios.get('http://localhost:5000/jobs');
+      jobs.value = response.data;
     });
 
 </script>
