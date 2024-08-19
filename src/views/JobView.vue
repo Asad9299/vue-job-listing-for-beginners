@@ -1,17 +1,21 @@
 <script setup>
   import axios from 'axios';
   import { ref, onMounted } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
   import BackButton from '@/components/BackButton.vue';
+import { useToast } from 'vue-toastification';
   
   const job = ref({});
   const isLoading = ref(true);
+  const toast = useToast();
+  const route = useRoute();
+  const router = useRouter();
+  const jobId = route.params.id;
 
   onMounted(async () => {
     try {
-      const route = useRoute();
-      const response = await axios(`/api/jobs/${route.params.id}`);
+      const response = await axios(`/api/jobs/${jobId}`);
       job.value = response.data;
     } catch (error) {
       console.error('Error showing the job', error);
@@ -19,6 +23,22 @@
       isLoading.value = false;
     }
   });
+
+  const deleteJob = async () => {
+    try { 
+      const confirm = window.confirm('Are you sure you want to delete this job?');
+      if(confirm) {
+        await axios.delete(`/api/jobs/${jobId}`);
+        toast.success('Job has been Deleted Successfully!');
+  
+        router.push('/jobs');
+      }
+    } catch (error) {
+      console.error('Error Deleting the Job!', error);
+      toast.error('Error Deleting the Job!');
+    }
+  }
+
 </script>
 
 <template>
@@ -92,7 +112,7 @@
 
               <button
                 class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-              >
+                @click="deleteJob()">
                 Delete Job
               </button>
             </div>
