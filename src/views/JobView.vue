@@ -11,7 +11,7 @@
   onMounted(async () => {
     try {
       const route = useRoute();
-      const response = await axios(`http://localhost:5000/jobs/${route.params.id}`);
+      const response = await axios(`/api/jobs/${route.params.id}`);
       job.value = response.data;
     } catch (error) {
       console.error('Error showing the job', error);
