@@ -4,7 +4,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
   import BackButton from '@/components/BackButton.vue';
-import { useToast } from 'vue-toastification';
+  import { useToast } from 'vue-toastification';
   
   const job = ref({});
   const isLoading = ref(true);
@@ -106,7 +106,7 @@ import { useToast } from 'vue-toastification';
             <div class="bg-white p-6 rounded-lg shadow-md mt-6">
               <h3 class="text-xl font-bold mb-6">Manage Job</h3>
               <RouterLink
-                to="/jobs/add"
+                :to="`/jobs/edit/${jobId}`"
                 class="bg-green-500 hover:bg-green-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >Edit Job</RouterLink>
 
