@@ -125,6 +125,20 @@
         "contactEmail": "popu@mailinator.com",
         "contactPhone": "+1 (444) 263-9829"
       }
+    },
+    {
+      "id": "78ce",
+      "type": "Remote",
+      "title": "Chandler Stephenson",
+      "description": "Aliqua Consequuntur",
+      "salary": "Over $200K",
+      "location": "Animi quisquam mole",
+      "company": {
+        "name": "Warner Mccray Traders",
+        "description": "Nostrum quos eiusmod",
+        "contactEmail": "bagumusuke@mailinator.com",
+        "contactPhone": "+1 (404) 457-9062"
+      }
     }
   ]
 }
