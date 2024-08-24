@@ -49,7 +49,7 @@
                 ]"
                   >Jobs</RouterLink>
                 <RouterLink
-                  to="jobs/add"
+                  to="/jobs/add"
                   :class="[
                   isRouteActive('/jobs/add')
                     ? 'bg-green-900'
